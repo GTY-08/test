@@ -97,8 +97,8 @@ player_x = screen_width // 2
 player_y = screen_height // 2
 player_speed_x = 0  # X축 속도
 player_speed_y = 0  # Y축 속도
-acceleration = 0.54  # 가속도
-friction = 0.97  # 마찰(감속 비율)
+acceleration = 1.3  # 가속도
+friction = 0.915 # 마찰(감속 비율)
 projectile_speed = 55  # 투사체 속도
 player_Maxhp = 150
 player_hp = 150  # 플레이어 HP
@@ -475,9 +475,9 @@ class Enemy:
 
 class MutantEnemy(Enemy):
     def __init__(self, x, y):
-        super().__init__(x, y, 750, 6, 37, 8, 1, 35)
-        self.exp_reward = 300
-        self.area_damage_radius = 175  # 장판의 반지름
+        super().__init__(x, y, 800, 6, 37, 8, 1, 40)
+        self.exp_reward = 320
+        self.area_damage_radius = 185  # 장판의 반지름
         self.last_area_time = pygame.time.get_ticks()  # 마지막 장판 생성 시간
         self.area_duration = 4500  # 장판이 유지되는 시간 
         self.area_active = False
@@ -514,8 +514,8 @@ class MutantEnemy(Enemy):
 # 자폭 적 클래스
 class SuicideEnemy(Enemy):
     def __init__(self, x, y):
-        super().__init__(x, y, 350, 9, 37, 7, 1.25, 60) 
-        self.exp_reward = 230
+        super().__init__(x, y, 400, 9.5, 37, 7, 1.25, 70) 
+        self.exp_reward = 260
     
     def explode(self):
         # 폭발 시 대미지 적용
@@ -528,7 +528,7 @@ class SuicideEnemy(Enemy):
 # 타이탄 클래스
 class Titan(Enemy):
     def __init__(self, x, y):
-        super().__init__(x, y, 1250, 3.5, 50, 6, 1.75, 80)  
+        super().__init__(x, y, 1250, 4, 50, 6, 1.75, 80)  
         self.exp_reward = 250
         
     def update(self):
